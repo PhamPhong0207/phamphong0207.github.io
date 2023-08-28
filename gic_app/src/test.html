@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Rendering Example with Popup</title>
+  <style>
+    /* CSS cho phần popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="dataContainer"></div>
+  <button id="showPopupButton">Hiển thị Popup</button>
+  
+  <!-- Phần tử popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Popup Content</h2>
+      <p>This is the content of the popup.</p>
+      <button id="closePopupButton">Đóng Popup</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const dataContainer = document.getElementById("dataContainer");
+    const showPopupButton = document.getElementById("showPopupButton");
+    const popup = document.getElementById("popup");
+    const closePopupButton = document.getElementById("closePopupButton");
+
+    // Gửi yêu cầu GET đến API hình ảnh và render hình ảnh
+    axios.get('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic6CsTYl4BO.woff2')
+      .then(response => {
+        const photoData = response.data;
+
+        // Tạo phần tử HTML để hiển thị hình ảnh
+        const photoElement = document.createElement("div");
+        photoElement.innerHTML = `
+          <h1>${photoData.title}</h1>
+          <img src="${photoData.url}" alt="${photoData.title}">
+        `;
+
+        // Thêm phần tử vào container
+        dataContainer.appendChild(photoElement);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+    // Sự kiện khi bấm nút "Hiển thị Popup"
+    showPopupButton.addEventListener("click", () => {
+      popup.style.display = "block";
+    });
+
+    // Sự kiện khi bấm nút "Đóng Popup"
+    closePopupButton.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+  </script>
+</body>
+</html>

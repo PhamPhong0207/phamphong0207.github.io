@@ -1,0 +1,38 @@
+.popup_A1{
+    position: absolute;
+    top: 67%;
+    right: 8%;
+    z-index: 10;
+}
+.safari1_img{
+    position: absolute;
+    top: 52px;
+    left: 11%;
+    width: 77%;
+}
+.img-backround{
+    width: 326px;
+    height: 375px;
+}
+#btn_1{
+    transform: translate(-21px, -2px);
+}
+#close_btn2{
+    transform: translate(4px, 20px);
+}
+.popup_A2{
+    width: 500px;
+    height: 500px;
+    background-color: rebeccapurple;
+} 
+/* #btn_cf{
+    z-index: 10;
+    /* top: -172px; */
+    /* position: absolute;
+    bottom: 150px; */
+#img2{
+    position: absolute;
+    top: 38px;
+    left: 11%;
+    width: 77%;}
+
